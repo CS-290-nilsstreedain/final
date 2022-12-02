@@ -57,6 +57,46 @@ a {
     /* Center image */
     display: flex;
     justify-content: center;
+    margin: 20px;
+}
+
+.clicker-button-container {
+    position:relative;
+    width: 50%;
+    display: flex;
+    justify-content: space-between;
+    margin: 40px;
+}
+
+.auto-clicker-button-container {
+    position:relative;
+    width: 50%;
+    display: flex;
+    justify-content: space-between;
+    margin: 40px;
+}
+#axe-button {
+    position: absolute;
+    font-family: 'Poppins', sans-serif;
+    font-size: 15px;
+    cursor: pointer;
+    color: black;
+    transform: translate(75%, 50%);
+    background-color: transparent;
+    border-radius: 45%;
+    /*border: none;*/
+}
+
+#auto-axe-button {
+    position: absolute;
+    font-family: 'Poppins', sans-serif;
+    font-size: 15px;
+    cursor: pointer;
+    color: black;
+    transform: translate(50%, 50%);
+    background-color: transparent;
+    border-radius: 45%;
+    /*border: none;*/
 }
 
 #wood-button {
@@ -101,7 +141,7 @@ a {
     margin: 10px;
     padding: 10px;
     border-radius: 8px;
-    background-color: #CF0A0A;
+    background-color: #CF0A0A; 
     box-shadow: 4px 4px 12px rgba(0, 0, 0, 0.25);
     cursor: pointer;
 }

@@ -7,9 +7,9 @@ const fps = 30
 
 var woodButton = document.getElementById('wood-button')
 var woodNumber = document.getElementById('wood-number')
-var axe = document.getElementById('axe')
+var axe = document.getElementById('axe-button')
 var axeNumber = document.getElementById('axe-number')
-var autoAxe = document.getElementById('auto-axe')
+var autoAxe = document.getElementById('auto-axe-button')
 var autoAxeNumber = document.getElementById('auto-axe-number')
 
 var devMode = true

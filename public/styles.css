@@ -1,69 +1,95 @@
 /* Disable scrolling */
-html, body {margin: 0; height: 100%; overflow: hidden}
+body {height: 100%; overflow: hidden}
 
+/* General rules */
 body {
     font-family: 'Poppins', sans-serif;
     margin: 0;
 }
 
+a {
+    color: white;
+    text-decoration: none;
+}
+  
+a:hover {
+    text-decoration: none;
+}
+
+/* Header */
 header {
-    background-color: #000;
+    background-color: black;
+    color: white;
     display: flex;
     align-items: center;
     position: relative;
 }
 
-header a {
-    color: #fff;
-}
-
-a {
-    color: black;
-    text-decoration: none;
-}
-
-.site-title, .right-text {
+header h1, header li {
     font-size: 24px;
     font-weight: 100;
     margin: 0 20px 0 20px;
-    padding-top: 20px;
-    padding-bottom: 10px;
 }
 
-/* .right-text {
-    text-align: right;
-} */
-  
-  .site-title a:hover {
-    text-decoration: none;
+header li {
+    display: inline;
 }
 
+header ul {
+    
+}
+
+/* Content */
 .content {
     display: flex;
 }
 
+/* Clicker */
 .clicker {
     display: inline-block;
+    padding: 20px;
+    /* Take up 50% of the page */
     min-width: 50%;
     max-width: 50%;
-    margin: 0 10px auto 10px;
-    padding: 20px;
-    border-radius: 3px;
 }
 
-#wood-number {
-    font-size:60px;
-    font-weight: bold;
-}
-
-.button-div {
+.wood {
     /* Center image */
     display: flex;
     justify-content: center;
     margin: 20px;
 }
 
-.clicker-button-container {
+#wood-title {
+    font-size:56px;
+    font-weight: bold;
+}
+
+.button-store {
+    display: inline-block;
+    text-align: center;
+}
+
+.axe, .auto-axe, .chainsaw, .auto-chainsaw, .flame-thrower, .auto-flame-thrower {
+    background-color: white;
+    color: black;
+    width: 175px;
+    text-align: center;
+    margin: 10px;
+    border-radius: 8px;
+    display: inline-block;
+    vertical-align: top;
+    box-shadow: 4px 4px 12px rgba(0, 0, 0, 0.25);
+    cursor: pointer;
+    outline: 2px solid lightgrey;
+}
+
+.button-image {
+    width: 50px;
+}
+
+
+/* .axe {
     position:relative;
     width: 50%;
     display: flex;
@@ -71,13 +97,14 @@ a {
     margin: 40px;
 }
 
-.auto-clicker-button-container {
+.auto-axe {
     position:relative;
     width: 50%;
     display: flex;
     justify-content: space-between;
     margin: 40px;
 }
+
 #axe-button {
     position: absolute;
     font-family: 'Poppins', sans-serif;
@@ -88,7 +115,7 @@ a {
     background-color: transparent;
     border-radius: 45%;
     /*border: none;*/
-}
+/* }
 
 #auto-axe-button {
     position: absolute;
@@ -98,26 +125,29 @@ a {
     color: black;
     transform: translate(50%, 50%);
     background-color: transparent;
-    border-radius: 45%;
-    /*border: none;*/
-}
+    border-radius: 45%; */
+/*}*/
 
 #wood-button {
     cursor: pointer;
 }
 
-#wood-number, #wood-button {
+#wood-title, #wood-button {
     text-align: center;
     margin: 0 10px auto 10px;
 }
 
-.store {
+/* Store */
+#store {
     background-color: #DC5F00;
-    text-align: center;
+    height: 100vh;
     overflow: scroll;
-    height: 100%;
     padding: 20px;
-    padding-bottom: 20px;
+    text-align: center;
+}
+
+.posts {
+    margin-bottom: 90px;
 }
 
 
@@ -134,7 +164,7 @@ a {
     max-width: 200px;
 }
   
-  .post-info-container {
+.post-info-container {
     width: 100%;
     margin-top: 20px;
 }

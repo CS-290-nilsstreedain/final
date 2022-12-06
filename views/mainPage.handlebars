@@ -1,0 +1,42 @@
+<div class="clicker">
+    <div class="wood">
+        <img id="wood-button" src="/benny.png">
+        <p id="wood-title">Wood: 0</p>
+    </div>
+
+    <div class="button-store">
+        <div class="axe">
+            <img class="button-image" src="/axe.png">
+            <p id="axe-title">Buy Axe - 25</p>
+        </div>
+        <div class="auto-axe">
+            <img class="button-image" src="/axe.png">
+            <p id="auto-axe-title">Buy Auto Axe - 50</p>
+        </div>
+        <div class="chainsaw">
+            <img class="button-image" src="/chainsaw.png">
+            <p id="axe-title">Buy Chainsaw - 75</p>
+        </div>
+        <div class="auto-chainsaw">
+            <img class="button-image" src="/chainsaw.png">
+            <p id="auto-chainsaw-title">Buy Auto Chainsaw - 150</p>
+        </div>
+        <div class="flame-thrower">
+            <img class="button-image" src="/flame.png">
+            <p id="flame-thrower-title">Buy Flame Thrower - 125</p>
+        </div>
+        <div class="auto-flame-thrower">
+            <img class="button-image" src="/flame.png">
+            <p id="auto-flame-thrower-title">Buy Auto Flame Thrower - 375</p>
+        </div>
+    </div>
+
+</div>
+<div id="store">
+    <h1 class="store-title">Store</h1>
+    <div class="posts">
+        {{#each postData}}
+            {{> post price=price source=photoURL itemDescription=description}}
+        {{/each}}
+    </div>
+</div>

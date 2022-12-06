@@ -1,0 +1,24 @@
+<div class="clicker">
+    <p id="wood-number">Wood: 0</p>
+
+    <div class="button-div">
+        <img id="wood-button" src="benny.png">
+    </div>
+
+    <div class="clicker-button-container">
+        <img id = "axe" src = "axe1.png">
+            <button id = "axe-button">Buy Axe</button>
+    </div>
+    <div class="auto-clicker-button-container">
+        <img id = "auto-axe" src = "axe1.png">
+        <button id = "auto-axe-button">Buy Auto Axe</button>
+    </div>
+
+    </div>
+    <div class="store" id="store">
+        <h1 class="store-title">Store</h1>
+        {{#each postData}}
+            {{> post price=price source=photoURL itemDescription=description}}
+        {{/each}}
+    </div>
+</div>

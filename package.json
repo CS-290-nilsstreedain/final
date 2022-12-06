@@ -1,0 +1,26 @@
+{
+  "name": "final",
+  "version": "1.0.0",
+  "description": "Final project for CS290 at OSU",
+  "main": "server.js",
+  "scripts": {
+    "prestart": "npm run build",
+    "start": "node server.js",
+    "build": "handlebars views/partials/post.handlebars -f public/postTemplate.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/CS-290-nilsstreedain/final"
+  },
+  "author": "",
+  "license": "UNLICENSED",
+  "bugs": {
+    "url": "https://github.com/CS-290-nilsstreedain/final/issues"
+  },
+  "homepage": "https://github.com/CS-290-nilsstreedain/final#readme",
+  "dependencies": {
+    "express": "^4.18.2",
+    "express-handlebars": "^6.0.6",
+    "handlebars": "^4.7.7"
+  }
+}

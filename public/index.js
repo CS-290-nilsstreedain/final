@@ -57,6 +57,7 @@ leaderboard.onclick = function() {
 };
 
 setInterval(function() {
-    wood += wps/fps
-	woodTitle.textContent = "Wood Count: " + Math.round(wood)
-}, 1000/fps)
+    wood += wps/fps;
+	woodTitle.textContent = "Wood Count: " + Math.round(wood);
+	woodPer.textContent = "Wood Per Sec: " + Math.round(wps);
+}, 1000/fps);

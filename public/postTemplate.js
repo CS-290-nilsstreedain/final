@@ -10,14 +10,14 @@ templates['post'] = template({"compiler":[8,">= 4.3.0"],"main":function(containe
 
   return "<div class=\"post\" data-price=\""
     + alias4(((helper = (helper = lookupProperty(helpers,"price") || (depth0 != null ? lookupProperty(depth0,"price") : depth0)) != null ? helper : alias2),(typeof helper === alias3 ? helper.call(alias1,{"name":"price","hash":{},"data":data,"loc":{"start":{"line":1,"column":30},"end":{"line":1,"column":39}}}) : helper)))
-    + "\">\r\n    <div class=\"post-contents\">\r\n        <div class=\"post-image-container\">\r\n            <img src=\""
+    + "\">\n    <div class=\"post-contents\">\n        <div class=\"post-image-container\">\n            <img src=\""
     + alias4(((helper = (helper = lookupProperty(helpers,"source") || (depth0 != null ? lookupProperty(depth0,"source") : depth0)) != null ? helper : alias2),(typeof helper === alias3 ? helper.call(alias1,{"name":"source","hash":{},"data":data,"loc":{"start":{"line":4,"column":22},"end":{"line":4,"column":32}}}) : helper)))
     + "\" alt=\""
     + alias4(((helper = (helper = lookupProperty(helpers,"itemDescription") || (depth0 != null ? lookupProperty(depth0,"itemDescription") : depth0)) != null ? helper : alias2),(typeof helper === alias3 ? helper.call(alias1,{"name":"itemDescription","hash":{},"data":data,"loc":{"start":{"line":4,"column":39},"end":{"line":4,"column":58}}}) : helper)))
-    + "\">\r\n        </div>\r\n        <div class=\"post-info-container\">\r\n            <a href=\"#\" class=\"post-title\">"
+    + "\">\n        </div>\n        <div class=\"post-info-container\">\n            <a href=\"#\" class=\"post-title\">"
     + alias4(((helper = (helper = lookupProperty(helpers,"itemDescription") || (depth0 != null ? lookupProperty(depth0,"itemDescription") : depth0)) != null ? helper : alias2),(typeof helper === alias3 ? helper.call(alias1,{"name":"itemDescription","hash":{},"data":data,"loc":{"start":{"line":7,"column":43},"end":{"line":7,"column":62}}}) : helper)))
     + "</a> <span class=\"post-price\">$"
     + alias4(((helper = (helper = lookupProperty(helpers,"price") || (depth0 != null ? lookupProperty(depth0,"price") : depth0)) != null ? helper : alias2),(typeof helper === alias3 ? helper.call(alias1,{"name":"price","hash":{},"data":data,"loc":{"start":{"line":7,"column":93},"end":{"line":7,"column":102}}}) : helper)))
-    + "</span>\r\n        </div>\r\n    </div>\r\n</div>";
+    + "</span>\n        </div>\n    </div>\n</div>";
 },"useData":true});
 })();

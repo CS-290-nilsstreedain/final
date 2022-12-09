@@ -84,6 +84,10 @@ header ul {
     outline: 2px solid lightgrey;
 }
 
+#axe-title, #auto-axe-title, #chainsaw-title, #auto-chainsaw-title, #flame-thrower-title, #auto-flame-thrower-title {
+    margin-top: 0;
+}
+
 .button-image {
     width: 50px;
 }

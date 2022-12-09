@@ -127,8 +127,6 @@ storePosts.addEventListener("click", function (event) {
     alreadyWon = true;
   }
 });
-storePosts = document.getElementById('store')
-
 
 // Array of Tool objects
 var tools = [

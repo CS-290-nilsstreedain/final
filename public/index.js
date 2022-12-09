@@ -2,6 +2,7 @@ var wood = 0;	// User wood total
 var wpc = 1;	// Wood per click
 var wps = 0;	// Wood per second
 const fps = 30;	// FPS
+var score = 0;
 
 function Tool(vname, name, price, count, wpcs, wpss) {
 	this.vname = vname;
@@ -36,7 +37,7 @@ function endGame() {
 				method: 'POST',
 				body: JSON.stringify({
 					name: name,
-					score: wood,
+					score: (wood + score),
 					date: new Date(Date.now()).toLocaleDateString()
 				}),
 				headers: {
@@ -87,6 +88,7 @@ storePosts.addEventListener('click', function(event) {
 		if(wood >= priceNum) {
 			wood -= priceNum
 			post.classList.add("bought")
+			score += 100
 		} else {
 			alert("You need " + priceNum + " wood to purchase this item.")
 		}
@@ -108,6 +110,10 @@ storePosts.addEventListener('click', function(event) {
 
 	if(boughtItems === (postList.length) && !alreadyWon) {
 		alert("Congrats! You have bought Benny's entire List!!! You win!!!!")
+		party.confetti(this, {
+			count: party.variation.range(200, 400),
+		});
+		score += 1000
 		alreadyWon = true
 	}
 })

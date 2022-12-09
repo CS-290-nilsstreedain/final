@@ -35,10 +35,6 @@ header li {
     display: inline;
 }
 
-header ul {
-    
-}
-
 /* Content */
 .content {
     display: flex;
@@ -54,15 +50,24 @@ header ul {
 }
 
 .wood {
-    /* Center image */
-    display: flex;
-    justify-content: center;
+	width: 100%;
     margin: 20px;
+	display: inline-block;
+	text-align: center;
 }
 
-#wood-title {
-    font-size:56px;
+#woodTitle {
+    font-size: 56px;
     font-weight: bold;
+	margin-bottom: 0;
+}
+
+#woodButton:hover {
+	cursor: pointer;
+}
+
+#woodButton:active {
+	transform: scale(108%);
 }
 
 .button-store {
@@ -70,7 +75,7 @@ header ul {
     text-align: center;
 }
 
-.axe, .auto-axe, .chainsaw, .auto-chainsaw, .flame-thrower, .auto-flame-thrower {
+.buttons {
     background-color: white;
     color: black;
     width: 175px;
@@ -92,55 +97,6 @@ header ul {
     width: 50px;
 }
 
-
-/* .axe {
-    position:relative;
-    width: 50%;
-    display: flex;
-    justify-content: space-between;
-    margin: 40px;
-}
-
-.auto-axe {
-    position:relative;
-    width: 50%;
-    display: flex;
-    justify-content: space-between;
-    margin: 40px;
-}
-
-#axe-button {
-    position: absolute;
-    font-family: 'Poppins', sans-serif;
-    font-size: 15px;
-    cursor: pointer;
-    color: black;
-    transform: translate(75%, 50%);
-    background-color: transparent;
-    border-radius: 45%;
-    /*border: none;*/
-/* }
-
-#auto-axe-button {
-    position: absolute;
-    font-family: 'Poppins', sans-serif;
-    font-size: 15px;
-    cursor: pointer;
-    color: black;
-    transform: translate(50%, 50%);
-    background-color: transparent;
-    border-radius: 45%; */
-/*}*/
-
-#wood-button {
-    cursor: pointer;
-}
-
-#wood-title, #wood-button {
-    text-align: center;
-    margin: 0 10px auto 10px;
-}
-
 /* Store */
 #store {
     background-color: #DC5F00;
@@ -153,7 +109,6 @@ header ul {
 .posts {
     margin-bottom: 90px;
 }
-
 
 .post-contents {
     display: flex;
@@ -188,4 +143,9 @@ header ul {
     background-color: black; 
     box-shadow: 4px 4px 12px rgba(0, 0, 0, 0.25);
     cursor: pointer;
+}
+
+#leaderboard {
+	text-align: center;
+	margin: auto auto;
 }

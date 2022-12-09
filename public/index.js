@@ -3,140 +3,69 @@ var wpc = 1 // Wood per click
 var wps = 0 // Wood per second
 const fps = 30 // FPS
 
-// Grab items from the DOM
-var woodButton = document.getElementById('wood-button')
-var woodNumber = document.getElementById('wood-title')
-var axe = document.getElementsByClassName('axe')[0]
-var axeTitle = document.getElementById('axe-title')
-var autoAxe = document.getElementsByClassName('auto-axe')[0]
-var autoAxeTitle = document.getElementById('auto-axe-title')
-var chainsaw = document.getElementsByClassName('chainsaw')[0]
-var chainsawTitle = document.getElementById('chainsaw-title')
-var autoChainsaw = document.getElementsByClassName('auto-chainsaw')[0]
-var autoChainsawTitle = document.getElementById('auto-chainsaw-title')
-var flameThrower = document.getElementsByClassName('flame-thrower')[0]
-var flameThrowerTitle = document.getElementById('flame-thrower-title')
-var autoFlameThrower = document.getElementsByClassName('auto-flame-thrower')[0]
-var autoFlameThrowerTitle = document.getElementById('auto-flame-thrower-title')
-
-// Button prices
-var axePrice = 25
-var autoAxePrice = 50
-var chainsawPrice = 75
-var autoChainsawPrice = 150
-var flameThrowerPrice = 125
-var autoFlameThrowerPrice = 375
-
-// Dev mode (for testing)
-var devMode = false
-if(devMode) {
-    wood += 1000000
+// Generalized function for pruchases
+function purchase(vname, name, price, count, wpcs, wpss) {
+	if (wood >= price) {
+		wpc += wpcs
+		wps += wpss
+		wood -= price
+		price = Math.round(price * 1.25)
+		count += 1
+		document.getElementById(vname + 'Title').textContent = "Buy " + name + " - " + price
+		document.getElementById(vname + 'Counter').textContent = name + "s: " + count
+	} else {
+		alert("You need " + price + " wood to purchase this item.")
+	}
 }
 
-// Update wood value in DOM
-function updateWood() {
-    woodNumber.textContent = "Wood Count: " + Math.round(wood)
+function endGame() {
+	fetch('/getMinScore')
+	.then(response => response.json())
+	.then(json => {
+		var name = ""
+		if ((json.count < 10 || wood > json.score) && (name = prompt("Congratulations, you've scored in the top 10! Please enter your name to be added to the leaderboard:"))) {
+			fetch('/addScore', {
+				method: 'POST',
+				body: JSON.stringify({
+					name: name,
+					score: wood,
+					date: new Date(Date.now()).toLocaleDateString()
+				}),
+				headers: {
+					'Content-Type': 'application/json'
+				}
+			})
+		}
+	}).then(function(res) {
+		window.location = '/leaderboard';
+	});
 }
 
-// Exponential increase
-function increaseVar(temp) {
-    temp = Math.round(temp * 1.25)
-    return temp
-}
+// Event listeners for purchases
+axe.addEventListener('click', () => purchase('axe', 'Axe', '25', 0, 1, 0));
+autoAxe.addEventListener('click', () => purchase('autoAxe', 'Auto Axe', '50', 0, 0, 1));
+chainsaw.addEventListener('click', () => purchase('chainsaw', 'Chainsaw', '75', 0, 3, 0));
+autoChainsaw.addEventListener('click', () => purchase('autoChainsaw', 'Auto Chainsaw', '150', 0, 0, 3));
+flameThrower.addEventListener('click', () => purchase('flameThrower', 'Flame Thrower', '125', 0, 5, 0));
+autoFlameThrower.addEventListener('click', () => purchase('autoFlameThrower', 'Auto Flame Thrower', '375', 0, 0, 5));
 
 // Normal click
-function chopWood() {
-    wood += wpc
-    updateWood()
-}
+woodButton.addEventListener('click', function() {
+	wood += wpc
+});
 
-// Click with axe
-function axeWood() {
-    if(wood >= axePrice) {
-        wpc += 1
-        wood -= axePrice
-        axePrice = increaseVar(axePrice)
-        updateWood()
-        axeTitle.textContent = "Buy Axe - " + axePrice
-    } else {
-        alert("You are running low on wood")
-    }
-}
-
-// Click with chainsaw
-function chainsawWood() {
-    if(wood >= chainsawPrice) {
-        wpc += 3
-        wood -= chainsawPrice
-        chainsawPrice = increaseVar(chainsawPrice)
-        updateWood()
-        chainsawTitle.textContent = "Buy Chainsaw - " + chainsawPrice
-    } else {
-        alert("You are running low on wood")
-    }
-}
-
-// Click with flame thrower
-function flameThrowWood() {
-    if(wood >= flameThrowerPrice) {
-        wpc += 5
-        wood -= flameThrowerPrice
-        flameThrowerPrice = increaseVar(flameThrowerPrice)
-        updateWood()
-        flameThrowerTitle.textContent = "Buy Flame Thrower - " + flameThrowerPrice
-    } else {
-        alert("You are running low on wood")
-    }
-}
-
-// Auto axe
-function autoAxes() {
-    if(wood >= autoAxePrice) {
-        wps += 1
-        wood -= autoAxePrice
-        autoAxePrice = increaseVar(autoAxePrice)
-        updateWood()
-        autoAxeTitle.textContent = "Buy Auto Axe - " + autoAxePrice
-    } else {
-        alert("You are running low on wood")
-    }
-}
-
-// Auto chainsaw
-function autoChainsaws() {
-    if(wood >= autoChainsawPrice) {
-        wps += 3
-        wood -= autoChainsawPrice
-        autoChainsawPrice = increaseVar(autoChainsawPrice)
-        updateWood()
-        autoChainsawTitle.textContent = "Buy Auto Chainsaw - " + autoChainsawPrice
-    } else {
-        alert("You are running low on wood")
-    }
-}
-
-// Auto flame thrower
-function autoFlameThrowers() {
-    if(wood >= autoFlameThrowerPrice) {
-        wps += 3
-        wood -= autoFlameThrowerPrice
-        autoFlameThrowerPrice = increaseVar(autoFlameThrowerPrice)
-        updateWood()
-        autoFlameThrowerTitle.textContent = "Buy Auto Flame Thrower - " + autoFlameThrowerPrice
-    } else {
-        alert("You are running low on wood")
-    }
-}
+// Warn when selecting leaderboard
+leaderboard.onclick = function() {
+	if (wood != 0) {
+		if (confirm("Wait! Leaving this page will end the game! Are you sure?")) {
+			endGame();
+		}
+		return false;
+	}
+};
 
 setInterval(function() {
-    wood += wps/fps
-    updateWood()
-}, 1000/fps)
-
-woodButton.addEventListener('click', chopWood)
-axe.addEventListener('click', axeWood)
-autoAxe.addEventListener('click', autoAxes)
-chainsaw.addEventListener('click', chainsawWood)
-autoChainsaw.addEventListener('click', autoChainsaws)
-flameThrower.addEventListener('click', flameThrowWood)
-autoFlameThrower.addEventListener('click', autoChainsaws)
+    wood += wps/fps;
+	woodTitle.textContent = "Wood Count: " + Math.round(wood);
+	woodPer.textContent = "Wood Per Sec: " + Math.round(wps);
+}, 1000/fps);

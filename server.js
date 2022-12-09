@@ -27,15 +27,11 @@ app.get('/leaderboard', function(req, res) {
     })
 })
 
-app.post('/leaderboard/addScore', function (req, res, next) {
-	var score = req.body.score;
-	var name = req.body.name;
-	var date = 'December 5th, 2022 at 10:30am';
-	
+app.post('/addScore', function (req, res, next) {
 	leaderBoardData.push({
-		name:name,
-		score:score,
-		date:date
+		name:req.body.name,
+		score:req.body.score,
+		date:req.body.date
 	})
 
 	leaderBoardData.sort((a, b) => b.score - a.score);

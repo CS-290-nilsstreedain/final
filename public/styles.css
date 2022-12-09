@@ -1,38 +1,42 @@
 /* Disable scrolling */
-body {height: 100%; overflow: hidden}
+body {
+  height: 100%;
+  overflow: hidden;
+}
 
 /* General rules */
 body {
-    font-family: 'Poppins', sans-serif;
-    margin: 0;
+  font-family: "Poppins", sans-serif;
+  margin: 0;
 }
 
 a {
-    color: white;
-    text-decoration: none;
+  color: white;
+  text-decoration: none;
 }
-  
+
 a:hover {
-    text-decoration: none;
+  text-decoration: none;
 }
 
 /* Header */
 header {
-    background-color: black;
-    color: white;
-    display: flex;
-    align-items: center;
-    position: relative;
+  background-color: black;
+  color: white;
+  display: flex;
+  align-items: center;
+  position: relative;
 }
 
-header h1, header li {
-    font-size: 24px;
-    font-weight: 100;
-    margin: 0 20px 0 20px;
+header h1,
+header li {
+  font-size: 24px;
+  font-weight: 100;
+  margin: 0 20px 0 20px;
 }
 
 header li {
-    display: inline;
+  display: inline;
 }
 
 /*header ul {
@@ -42,53 +46,57 @@ header li {
 
 /* Content */
 .content {
-    display: flex;
+  display: flex;
 }
 
 /* Clicker */
 .clicker {
-    display: inline-block;
-    padding: 20px;
-    /* Take up 50% of the page */
-    min-width: 50%;
-    max-width: 50%;
+  display: inline-block;
+  padding: 20px;
+  /* Take up 50% of the page */
+  min-width: 50%;
+  max-width: 50%;
 }
 
 .wood {
-    /* Center image */
-    display: flex;
-    justify-content: center;
-    margin: 20px;
+  /* Center image */
+  display: flex;
+  justify-content: center;
+  margin: 20px;
 }
 
 #wood-title {
-    font-size:56px;
-    font-weight: bold;
+  font-size: 56px;
+  font-weight: bold;
 }
 
 .button-store {
-    display: inline-block;
-    text-align: center;
+  display: inline-block;
+  text-align: center;
 }
 
-.axe, .auto-axe, .chainsaw, .auto-chainsaw, .flame-thrower, .auto-flame-thrower {
-    background-color: white;
-    color: black;
-    width: 175px;
-    text-align: center;
-    margin: 10px;
-    border-radius: 8px;
-    display: inline-block;
-    vertical-align: top;
-    box-shadow: 4px 4px 12px rgba(0, 0, 0, 0.25);
-    cursor: pointer;
-    outline: 2px solid lightgrey;
+.axe,
+.auto-axe,
+.chainsaw,
+.auto-chainsaw,
+.flame-thrower,
+.auto-flame-thrower {
+  background-color: white;
+  color: black;
+  width: 175px;
+  text-align: center;
+  margin: 10px;
+  border-radius: 8px;
+  display: inline-block;
+  vertical-align: top;
+  box-shadow: 4px 4px 12px rgba(0, 0, 0, 0.25);
+  cursor: pointer;
+  outline: 2px solid lightgrey;
 }
 
 .button-image {
-    width: 50px;
+  width: 50px;
 }
-
 
 /* .axe {
     position:relative;
@@ -130,63 +138,98 @@ header li {
 /*}*/
 
 #wood-button:hover {
-    cursor: pointer;  
+  cursor: pointer;
 }
 
 #wood-button:active {
-    transform: scale(108%);
+  transform: scale(108%);
 }
 
-#wood-title, #wood-button {
-    text-align: center;
-    margin: 0 10px auto 10px;
+#wood-title,
+#wood-button,
+#cheers {
+  /* position: block; */
+  text-align: center;
+  margin: 0 10px auto 10px;
+}
+
+#wood-text-container {
+  flex-direction: column;
+}
+
+#wood-button {
+  /* position: relative; */
+  height: 470px;
+  width: 500px;
+}
+
+#head,
+#mouth,
+#log {
+  /* transform: scale(80%); */
+  position: absolute;
+  left: 0;
+}
+
+#log {
+  overflow: hidden;
+  z-index: 2;
+  top: 0;
+}
+
+#head {
+  z-index: 3;
+}
+
+#mouth {
+  z-index: 1;
 }
 
 /* Store */
 #store {
-    background-color: #DC5F00;
-    height: 100vh;
-    overflow: scroll;
-    padding: 20px;
-    text-align: center;
+  background-color: #dc5f00;
+  height: 100vh;
+  overflow: scroll;
+  padding: 20px;
+  text-align: center;
 }
 
 .posts {
-    margin-bottom: 90px;
+  margin-bottom: 90px;
 }
 
-
 .post-contents {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    height: 100%;
-    width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  height: 100%;
+  width: 100%;
 }
 
 .post-image-container img {
-    max-height: 140px;
-    max-width: 200px;
-}
-  
-.post-info-container {
-    width: 100%;
-    margin-top: 20px;
+  max-height: 140px;
+  max-width: 200px;
 }
 
-.post-title, .post-price {
-    color: white;
+.post-info-container {
+  width: 100%;
+  margin-top: 20px;
+}
+
+.post-title,
+.post-price {
+  color: white;
 }
 
 .post {
-    display: inline-block;
-    vertical-align: top;
-    height: 200px;
-    width: 200px;
-    margin: 10px;
-    padding: 10px;
-    border-radius: 8px;
-    background-color: black; 
-    box-shadow: 4px 4px 12px rgba(0, 0, 0, 0.25);
-    cursor: pointer;
+  display: inline-block;
+  vertical-align: top;
+  height: 200px;
+  width: 200px;
+  margin: 10px;
+  padding: 10px;
+  border-radius: 8px;
+  background-color: black;
+  box-shadow: 4px 4px 12px rgba(0, 0, 0, 0.25);
+  cursor: pointer;
 }

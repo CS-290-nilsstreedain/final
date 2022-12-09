@@ -28,10 +28,17 @@ app.get('/leaderboard', function(req, res) {
 })
 
 app.get('/getMinScore', function(req, res) {
-	res.json({
-		count: leaderBoardData.length,
-		score: leaderBoardData[leaderBoardData.length - 1].score
-	})
+	var c = leaderBoardData.length;
+	if (c > 0) {
+		res.json({
+			count: c,
+			score: leaderBoardData[c - 1].score
+		})
+	} else {
+		res.json({
+			count: c
+		})
+	}
 })
 
 app.post('/addScore', function (req, res, next) {

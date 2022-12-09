@@ -55,15 +55,24 @@ header li {
 }
 
 .wood {
-    /* Center image */
-    display: flex;
-    justify-content: center;
+	width: 100%;
     margin: 20px;
+	display: inline-block;
+	text-align: center;
 }
 
 #woodTitle {
-    font-size:56px;
+    font-size: 56px;
     font-weight: bold;
+	margin-bottom: 0;
+}
+
+#woodButton:hover {
+	cursor: pointer;
+}
+
+#woodButton:active {
+	transform: scale(108%);
 }
 
 .button-store {
@@ -89,59 +98,6 @@ header li {
     width: 50px;
 }
 
-
-/* .axe {
-    position:relative;
-    width: 50%;
-    display: flex;
-    justify-content: space-between;
-    margin: 40px;
-}
-
-.auto-axe {
-    position:relative;
-    width: 50%;
-    display: flex;
-    justify-content: space-between;
-    margin: 40px;
-}
-
-#axe-button {
-    position: absolute;
-    font-family: 'Poppins', sans-serif;
-    font-size: 15px;
-    cursor: pointer;
-    color: black;
-    transform: translate(75%, 50%);
-    background-color: transparent;
-    border-radius: 45%;
-    /*border: none;*/
-/* }
-
-#auto-axe-button {
-    position: absolute;
-    font-family: 'Poppins', sans-serif;
-    font-size: 15px;
-    cursor: pointer;
-    color: black;
-    transform: translate(50%, 50%);
-    background-color: transparent;
-    border-radius: 45%; */
-/*}*/
-
-#woodButton:hover {
-    cursor: pointer;  
-}
-
-#woodButton:active {
-    transform: scale(108%);
-}
-
-#woodTitle, #woodButton {
-    text-align: center;
-    margin: 0 10px auto 10px;
-}
-
 /* Store */
 #store {
     background-color: #DC5F00;
@@ -154,7 +110,6 @@ header li {
 .posts {
     margin-bottom: 90px;
 }
-
 
 .post-contents {
     display: flex;

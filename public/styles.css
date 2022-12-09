@@ -61,7 +61,7 @@ header li {
     margin: 20px;
 }
 
-#wood-title {
+#woodTitle {
     font-size:56px;
     font-weight: bold;
 }
@@ -71,7 +71,7 @@ header li {
     text-align: center;
 }
 
-.axe, .auto-axe, .chainsaw, .auto-chainsaw, .flame-thrower, .auto-flame-thrower {
+.buttons {
     background-color: white;
     color: black;
     width: 175px;
@@ -129,15 +129,15 @@ header li {
     border-radius: 45%; */
 /*}*/
 
-#wood-button:hover {
+#woodButton:hover {
     cursor: pointer;  
 }
 
-#wood-button:active {
+#woodButton:active {
     transform: scale(108%);
 }
 
-#wood-title, #wood-button {
+#woodTitle, #woodButton {
     text-align: center;
     margin: 0 10px auto 10px;
 }

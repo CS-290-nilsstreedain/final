@@ -1,186 +1,50 @@
-//const { application } = require("express")
-
 var wood = 0 // User wood total
 var wpc = 1 // Wood per click
 var wps = 0 // Wood per second
 const fps = 30 // FPS
 
-// Grab items from the DOM
-var woodButton = document.getElementById('wood-button')
-var woodNumber = document.getElementById('wood-title')
-var axe = document.getElementsByClassName('axe')[0]
-var axeTitle = document.getElementById('axe-title')
-var axeCount = document.getElementById('axe-counter')
-var autoAxe = document.getElementsByClassName('auto-axe')[0]
-var autoAxeTitle = document.getElementById('auto-axe-title')
-var autoAxeCount = document.getElementById('auto-axe-counter')
-var chainsaw = document.getElementsByClassName('chainsaw')[0]
-var chainsawTitle = document.getElementById('chainsaw-title')
-var chainsawCount = document.getElementById('chainsaw-counter')
-var autoChainsaw = document.getElementsByClassName('auto-chainsaw')[0]
-var autoChainsawTitle = document.getElementById('auto-chainsaw-title')
-var autoChainsawCount = document.getElementById('auto-chainsaw-counter')
-var flameThrower = document.getElementsByClassName('flame-thrower')[0]
-var flameThrowerTitle = document.getElementById('flame-thrower-title')
-var flamethrowerCount = document.getElementById('flamethrower-counter')
-var autoFlameThrower = document.getElementsByClassName('auto-flame-thrower')[0]
-var autoFlameThrowerTitle = document.getElementById('auto-flame-thrower-title')
-var autoFlamethrowerCount = document.getElementById('auto-flamethrower-counter')
-var leaderBoardLink = document.getElementsByClassName('leaderboard')[0]
-
-
-
-
-
-// Button prices
-var axePrice = 25
-var autoAxePrice = 50
-var chainsawPrice = 75
-var autoChainsawPrice = 150
-var flameThrowerPrice = 125
-var autoFlameThrowerPrice = 375
-
-//Button purchases
-var axeNum = 0
-var autoAxeNum = 0
-var chainsawNum = 0
-var autoChainsawNum = 0
-var flamethrowerNum = 0
-var autoFlamethrowerNum = 0
-
-// Dev mode (for testing)
-var devMode = false
-if(devMode) {
-    wood += 1000000
-}
-
-// Update wood value in DOM
-function updateWood() {
-    woodNumber.textContent = "Wood Count: " + Math.round(wood)
-}
-
 // Exponential increase
 function increaseVar(temp) {
-    temp = Math.round(temp * 1.25)
-    return temp
+    return Math.round(temp * 1.25)
 }
+
+// Generalized function for pruchases
+function purchase(vname, name, price, count, wpcs, wpss) {
+	if (wood >= price) {
+		wpc += wpcs
+		wps += wpss
+		wood -= price
+		price = increaseVar(price)
+		count += 1
+		document.getElementById(vname + 'Title').textContent = "Buy " + name + " - " + price
+		document.getElementById(vname + 'Counter').textContent = name + "s: " + count
+	} else {
+		alert("You need " + price + " wood to purchase this item.")
+	}
+}
+
+// Event listeners for purchases
+axe.addEventListener('click', () => purchase('axe', 'Axe', '25', 0, 1, 0));
+autoAxe.addEventListener('click', () => purchase('autoAxe', 'Auto Axe', '50', 0, 0, 1));
+chainsaw.addEventListener('click', () => purchase('chainsaw', 'Chainsaw', '75', 0, 3, 0));
+autoChainsaw.addEventListener('click', () => purchase('autoChainsaw', 'Auto Chainsaw', '150', 0, 0, 3));
+flameThrower.addEventListener('click', () => purchase('flameThrower', 'Flame Thrower', '125', 0, 5, 0));
+autoFlameThrower.addEventListener('click', () => purchase('autoFlameThrower', 'Auto Flame Thrower', '375', 0, 0, 5));
 
 // Normal click
-function chopWood() {
-    wood += wpc
-    updateWood()
-}
+woodButton.addEventListener('click', function() {
+	wood += wpc
+});
 
-// Click with axe
-function axeWood() {
-    if(wood >= axePrice) {
-        wpc += 1
-        wood -= axePrice
-        axePrice = increaseVar(axePrice)
-        axeNum += 1
-        updateWood()
-        axeTitle.textContent = "Buy Axe - " + axePrice
-        axeCount.textContent = "Axes: " + axeNum 
-    } else {
-        alert("You are running low on wood")
-    }
-}
-
-// Click with chainsaw
-function chainsawWood() {
-    if(wood >= chainsawPrice) {
-        wpc += 3
-        wood -= chainsawPrice
-        chainsawPrice = increaseVar(chainsawPrice)
-        chainsawNum += 1
-        updateWood()
-        chainsawTitle.textContent = "Buy Chainsaw - " + chainsawPrice
-        chainsawCount.textContent = "Chainsaws: " + chainsawNum
-
-    } else {
-        alert("You are running low on wood")
-    }
-}
-
-// Click with flame thrower
-function flameThrowWood() {
-    if(wood >= flameThrowerPrice) {
-        wpc += 5
-        wood -= flameThrowerPrice
-        flameThrowerPrice = increaseVar(flameThrowerPrice)
-        flamethrowerNum += 1
-        updateWood()
-        flameThrowerTitle.textContent = "Buy Flame Thrower - " + flameThrowerPrice
-        flamethrowerCount.textContent = "Flame throwers: " + flamethrowerNum 
-    } else {
-        alert("You are running low on wood")
-    }
-}
-
-// Auto axe
-function autoAxes() {
-    if(wood >= autoAxePrice) {
-        wps += 1
-        wood -= autoAxePrice
-        autoAxePrice = increaseVar(autoAxePrice)
-        autoAxeNum += 1
-        updateWood()
-        autoAxeTitle.textContent = "Buy Auto Axe - " + autoAxePrice
-        autoAxeCount.textContent = "Auto Axes: " + autoAxeNum 
-    } else {
-        alert("You are running low on wood")
-    }
-}
-
-// Auto chainsaw
-function autoChainsaws() {
-    if(wood >= autoChainsawPrice) {
-        wps += 3
-        wood -= autoChainsawPrice
-        autoChainsawPrice = increaseVar(autoChainsawPrice)
-        autoChainsawNum += 1
-        updateWood()
-        autoChainsawTitle.textContent = "Buy Auto Chainsaw - " + autoChainsawPrice
-        autoChainsawCount.textContent = "Auto Chainsaws: " + autoChainsawNum 
-    } else {
-        alert("You are running low on wood")
-    }
-}
-
-// Auto flame thrower
-function autoFlameThrowers() {
-    if(wood >= autoFlameThrowerPrice) {
-        wps += 5
-        wood -= autoFlameThrowerPrice
-        autoFlameThrowerPrice = increaseVar(autoFlameThrowerPrice)
-        autoFlamethrowerNum += 1
-        updateWood()
-        autoFlameThrowerTitle.textContent = "Buy Auto Flame Thrower - " + autoFlameThrowerPrice
-        autoFlamethrowerCount.textContent = "Auto Flame throwers: " + autoFlamethrowerNum 
-    } else {
-        alert("You are running low on wood")
-    }
-}
-
-function leaderboardAlert(){
-    var leave = confirm("Wait! Leaving this page will clear all of your data! Are you sure?")
-    console.log(leave)
-
-    if(leave){
-       window.location = '/leaderboard'
-    }
-}
+// Warn when selecting leaderboard
+leaderboard.onclick = function() {
+    if (confirm("Wait! Leaving this page will end the game! Are you sure?")){
+	} else {
+		return false;
+	}
+};
 
 setInterval(function() {
     wood += wps/fps
-    updateWood()
+	woodTitle.textContent = "Wood Count: " + Math.round(wood)
 }, 1000/fps)
-
-woodButton.addEventListener('click', chopWood)
-axe.addEventListener('click', axeWood)
-autoAxe.addEventListener('click', autoAxes)
-chainsaw.addEventListener('click', chainsawWood)
-autoChainsaw.addEventListener('click', autoChainsaws)
-flameThrower.addEventListener('click', flameThrowWood)
-autoFlameThrower.addEventListener('click', autoFlameThrowers)
-leaderBoardLink.addEventListener('click', leaderboardAlert)

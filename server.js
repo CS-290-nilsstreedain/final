@@ -49,7 +49,8 @@ app.post('/leaderboard/addScore', function (req, res, next) {
 			} else {
 				res.status(200).send("Score successfully uploaded.");
 			}
-		})
+		}
+	 )
 });
 
 app.get('*', function (req, res) {

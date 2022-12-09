@@ -27,6 +27,13 @@ app.get('/leaderboard', function(req, res) {
     })
 })
 
+app.get('/getMinScore', function(req, res) {
+	res.json({
+		count: leaderBoardData.length,
+		score: leaderBoardData[leaderBoardData.length - 1].score
+	})
+})
+
 app.post('/addScore', function (req, res, next) {
 	leaderBoardData.push({
 		name:req.body.name,
@@ -35,7 +42,7 @@ app.post('/addScore', function (req, res, next) {
 	})
 
 	leaderBoardData.sort((a, b) => b.score - a.score);
-	leaderBoardData = leaderBoardData.slice(0, 9);
+	leaderBoardData = leaderBoardData.slice(0, 10);
 	
 	fs.writeFile('./leaderBoardData.json',
 		 JSON.stringify(leaderBoardData, null, 2),

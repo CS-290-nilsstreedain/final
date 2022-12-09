@@ -35,11 +35,6 @@ header li {
     display: inline;
 }
 
-/*header ul {
-    
-}
-*/
-
 /* Content */
 .content {
     display: flex;
@@ -144,4 +139,9 @@ header li {
     background-color: black; 
     box-shadow: 4px 4px 12px rgba(0, 0, 0, 0.25);
     cursor: pointer;
+}
+
+#leaderboard {
+	text-align: center;
+	margin: auto auto;
 }

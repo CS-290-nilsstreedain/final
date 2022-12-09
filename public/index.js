@@ -19,19 +19,26 @@ function purchase(vname, name, price, count, wpcs, wpss) {
 }
 
 function endGame() {
-	fetch('/addScore', {
-		method: 'POST',
-		body: JSON.stringify({
-			name: prompt("Please enter your name:"),
-			score: wood,
-			date: new Date(Date.now()).toLocaleDateString()
-		}),
-		headers: {
-			'Content-Type': 'application/json'
+	fetch('/getMinScore')
+	.then(response => response.json())
+	.then(json => {
+		var name = ""
+		if ((json.count < 10 || wood > json.score) && (name = prompt("Congratulations, you've scored in the top 10! Please enter your name to be added to the leaderboard:"))) {
+			fetch('/addScore', {
+				method: 'POST',
+				body: JSON.stringify({
+					name: name,
+					score: wood,
+					date: new Date(Date.now()).toLocaleDateString()
+				}),
+				headers: {
+					'Content-Type': 'application/json'
+				}
+			})
 		}
 	}).then(function(res) {
-		console.log(res.status)
-	})
+		window.location = '/leaderboard';
+	});
 }
 
 // Event listeners for purchases
@@ -49,9 +56,10 @@ woodButton.addEventListener('click', function() {
 
 // Warn when selecting leaderboard
 leaderboard.onclick = function() {
-    if (confirm("Wait! Leaving this page will end the game! Are you sure?")){
-		endGame();
-	} else {
+	if (wood != 0) {
+		if (confirm("Wait! Leaving this page will end the game! Are you sure?")) {
+			endGame();
+		}
 		return false;
 	}
 };

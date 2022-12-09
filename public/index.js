@@ -1,4 +1,4 @@
-var wood = 1000000000 // User wood total
+var wood = 0 // User wood total
 var wpc = 1 // Wood per click
 var wps = 0 // Wood per second
 const fps = 30 // FPS

@@ -123,77 +123,11 @@ storePosts.addEventListener("click", function (event) {
   postIndex = 0;
 
   if (boughtItems === postList.length && !alreadyWon) {
-    alert("Congrats! You have bought Benny's entire List!!! You win!!!!");
+    alert("Congrats! You have bought Benny's entire List!");
     alreadyWon = true;
   }
 });
 storePosts = document.getElementById('store')
-
-
-var alreadyWon = false
-
-storePosts.addEventListener('click', function(event) {
-	if(event.target.parentNode.classList.contains("post") && !event.target.parentNode.classList.contains("bought")) {
-		var post = event.target.parentNode
-		var price = post.firstChild.nextSibling.firstChild.nextSibling.nextSibling.nextSibling.firstChild.nextSibling.nextSibling.nextSibling.textContent
-		price = price.substr(1, price.length)
-		priceNum = Number(price)
-		if(wood >= priceNum) {
-			wood -= priceNum
-			post.classList.add("bought")
-		} else {
-			alert("You need " + priceNum + " wood to purchase this item.")
-		}
-	}
-	else if (event.target.parentNode.parentNode.classList.contains("post") && !event.target.parentNode.parentNode.classList.contains("bought")) {
-		var post = event.target.parentNode.parentNode
-		var price = post.firstChild.nextSibling.firstChild.nextSibling.nextSibling.nextSibling.firstChild.nextSibling.nextSibling.nextSibling.textContent
-		price = price.substr(1, price.length)
-		priceNum = Number(price)
-		if(wood >= priceNum) {
-			wood -= priceNum
-			post.classList.add("bought")
-		} else {
-			alert("You need " + priceNum + " wood to purchase this item.")
-		}
-	}
-	else if (event.target.parentNode.parentNode.parentNode.classList.contains("post") && !event.target.parentNode.parentNode.parentNode.classList.contains("bought")) {
-		var post = event.target.parentNode.parentNode.parentNode
-		var price = post.firstChild.nextSibling.firstChild.nextSibling.nextSibling.nextSibling.firstChild.nextSibling.nextSibling.nextSibling.textContent
-		price = price.substr(1, price.length)
-		priceNum = Number(price)
-		if(wood >= priceNum) {
-			wood -= priceNum
-			post.classList.add("bought")
-			score += 100
-		} else {
-			alert("You need " + priceNum + " wood to purchase this item.")
-		}
-	}
-
-
-	var boughtItems = 0
-	var postIndex = 0
-	var postList = document.getElementsByClassName("post")
-
-	while(postIndex < postList.length) {
-		if(postList[postIndex].classList.contains("bought")) {
-			boughtItems++
-		}
-		postIndex++
-	}
-
-	postIndex = 0
-
-	if(boughtItems === (postList.length) && !alreadyWon) {
-		alert("Congrats! You have bought Benny's entire List!!! You win!!!!")
-		party.confetti(this, {
-			count: party.variation.range(200, 400),
-		});
-		score += 1000
-		alreadyWon = true
-	}
-})
 
 
 // Array of Tool objects

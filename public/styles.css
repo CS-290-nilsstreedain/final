@@ -47,6 +47,9 @@ header li {
     /* Take up 50% of the page */
     min-width: 50%;
     max-width: 50%;
+    height: 100vh;
+    padding-bottom: 80px;
+    overflow: scroll;
 }
 
 .wood {
@@ -106,7 +109,7 @@ header li {
     text-align: center;
 }
 
-.posts {
+.last-button, .posts {
     margin-bottom: 90px;
 }
 
@@ -148,4 +151,9 @@ header li {
 #leaderboard {
 	text-align: center;
 	margin: auto auto;
+}
+
+.bought {
+    background-color: rgba(0,0,0,0.5);
+    cursor: default;
 }

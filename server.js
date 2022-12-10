@@ -16,16 +16,14 @@ app.use(express.json());
 app.use(express.static('public'));
 
 app.get('/', function(req, res) {
-res.status(200).render('mainPage', {
-        postData: postData
-    })
-})
+	res.status(200).render('mainPage', { postData: postData });
+});
 
 app.get('/leaderboard', function(req, res) {
-    res.status(200).render('leaderBoardPage', {
-        leaderBoardData: leaderBoardData
-    })
-})
+	res.status(200).render('leaderBoardPage', {
+		leaderBoardData: leaderBoardData
+	});
+});
 
 app.get('/getMinScore', function(req, res) {
 	var c = leaderBoardData.length;
@@ -33,20 +31,18 @@ app.get('/getMinScore', function(req, res) {
 		res.json({
 			count: c,
 			score: leaderBoardData[c - 1].score
-		})
+		});
 	} else {
-		res.json({
-			count: c
-		})
+		res.json({ count: c });
 	}
-})
+});
 
 app.post('/addScore', function (req, res, next) {
 	leaderBoardData.push({
 		name:req.body.name,
 		score:req.body.score,
 		date:req.body.date
-	})
+	});
 
 	leaderBoardData.sort((a, b) => b.score - a.score);
 	leaderBoardData = leaderBoardData.slice(0, 10);
@@ -60,14 +56,14 @@ app.post('/addScore', function (req, res, next) {
 				res.status(200).send("Score successfully uploaded.");
 			}
 		}
-	 )
+	 );
 });
 
 app.get('*', function (req, res) {
-    res.status(404).render('404');
+	res.status(404).render('404');
 });
 
 app.listen(port, function (err) {
-    if(err) throw err;
-    console.log('== Server is listening on port', port);
+	if(err) throw err;
+	console.log('== Server is listening on port', port);
 });
